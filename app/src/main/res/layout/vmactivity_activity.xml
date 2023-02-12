@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.contents.viewModels.v_1.ViewMActivity">
+
+    <TextView
+        android:id="@+id/tv_titleWithVM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="With ViewModel"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        />
+    <TextView
+        android:id="@+id/tv_vmCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="80sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_titleWithVM"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+    <Button
+        android:id="@+id/btn_vmCounter"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Counter"
+        app:layout_constraintTop_toBottomOf="@id/tv_vmCounter"
+        app:layout_constraintStart_toStartOf="@id/tv_vmCounter"
+        app:layout_constraintEnd_toEndOf="@id/tv_vmCounter"
+
+
+        />
+
+    <TextView
+        android:id="@+id/tv_titleWithoutVM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Without ViewModel"
+
+        app:layout_constraintBottom_toTopOf="@id/tv_vmCounterWithout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tv_vmCounterWithout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="80sp"
+        app:layout_constraintBottom_toTopOf="@id/btn_vmCounterWithout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+    <Button
+        android:id="@+id/btn_vmCounterWithout"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Counter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
