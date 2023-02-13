@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RevisitingAndroid</string>
+    <string name="note_LVA_v1">Pada dasarnya sama saja, hanya saja kita menggunakan livedata untuk realtime changed saja</string>
 </resources>

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.revisitingandroid.databinding.ActivityMainBinding
 import com.example.revisitingandroid.main.MainGridAdapter
+import com.example.revisitingandroid.main.contents.livedatas.LiveDataActivity
 import com.example.revisitingandroid.main.contents.viewModels.ViewModelsActivity
 
 class MainActivity : AppCompatActivity() {
@@ -36,6 +37,11 @@ class MainActivity : AppCompatActivity() {
             if((provideContent()[position]).lowercase() == "viewmodel")
             {
                 intent = Intent(this, ViewModelsActivity::class.java)
+            }
+            else if((provideContent()[position]).lowercase() == "live data")
+            {
+
+                intent = Intent(this, LiveDataActivity::class.java)
             }
             startActivity(intent)
         }

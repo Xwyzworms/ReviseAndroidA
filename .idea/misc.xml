@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/BelajarAndroid/RevisitingAndroidA/app/src/main/res/layout/activity_live_data.xml" value="0.264945652173913" />
+        <entry key="..\:/BelajarAndroid/RevisitingAndroidA/app/src/main/res/layout/activity_live_data_rc_content.xml" value="0.264945652173913" />
+        <entry key="..\:/BelajarAndroid/RevisitingAndroidA/app/src/main/res/layout/activity_lva_v1.xml" value="0.264945652173913" />
         <entry key="..\:/BelajarAndroid/RevisitingAndroidA/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/BelajarAndroid/RevisitingAndroidA/app/src/main/res/layout/grid_view_main_content.xml" value="0.264945652173913" />
         <entry key="..\:/BelajarAndroid/RevisitingAndroidA/app/src/main/res/layout/recycler_view_main.xml" value="0.36666666666666664" />
