@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">RevisitingAndroid</string>
     <string name="note_LVA_v1">Pada dasarnya sama saja, hanya saja kita menggunakan livedata untuk realtime changed saja</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

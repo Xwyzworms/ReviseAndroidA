@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/homeFragmentNavMain">
+
+    <fragment
+        android:id="@+id/homeFragmentNavMain"
+        android:name="com.example.revisitingandroid.main.contents.navigations.HomeFragmentNavMain"
+        android:label="HomeFragmentNavMain" >
+        <action
+            android:id="@+id/action_homeFragmentNavMain_to_homeFragment_NV"
+            app:destination="@id/homeFragment_NV"
+            app:enterAnim="@anim/push_down_in"
+            app:exitAnim="@anim/push_down_out"
+            app:popEnterAnim="@anim/push_up_in"
+            app:popExitAnim="@anim/push_up_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment_NV"
+        android:name="com.example.revisitingandroid.main.contents.navigations.v_1.HomeFragment_NV"
+        android:label="HomeFragment_NV" >
+        <action
+            android:id="@+id/action_homeFragment_NV_to_secondFragment_NV"
+            app:destination="@id/secondFragment_NV" />
+    </fragment>
+    <fragment
+        android:id="@+id/secondFragment_NV"
+        android:name="com.example.revisitingandroid.main.contents.navigations.v_1.SecondFragment_NV"
+        android:label="SecondFragment_NV" />
+</navigation>

@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.example.revisitingandroid.databinding.ActivityMainBinding
 import com.example.revisitingandroid.main.MainGridAdapter
 import com.example.revisitingandroid.main.contents.livedatas.LiveDataActivity
+import com.example.revisitingandroid.main.contents.navigations.NavigationActivity
 import com.example.revisitingandroid.main.contents.viewModels.ViewModelsActivity
 
 class MainActivity : AppCompatActivity() {
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     {
 
         return arrayListOf(
-            "ViewModel","Live Data","Activity_Fragment","Navigation Arch"
+            "ViewModel","Live Data","Activity_Fragment","Navigation"
         )
     }
 
@@ -42,6 +43,10 @@ class MainActivity : AppCompatActivity() {
             {
 
                 intent = Intent(this, LiveDataActivity::class.java)
+            }
+            else if((provideContent()[position]).lowercase() == "navigation")
+            {
+                intent = Intent(this, NavigationActivity::class.java)
             }
             startActivity(intent)
         }
