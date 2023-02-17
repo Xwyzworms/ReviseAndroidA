@@ -7,6 +7,7 @@ import com.example.revisitingandroid.databinding.ActivityMainBinding
 import com.example.revisitingandroid.main.MainGridAdapter
 import com.example.revisitingandroid.main.contents.livedatas.LiveDataActivity
 import com.example.revisitingandroid.main.contents.navigations.NavigationActivity
+import com.example.revisitingandroid.main.contents.recyclerViews.RV_RecyclerViewsActivity
 import com.example.revisitingandroid.main.contents.viewModels.ViewModelsActivity
 
 class MainActivity : AppCompatActivity() {
@@ -25,7 +26,8 @@ class MainActivity : AppCompatActivity() {
     {
 
         return arrayListOf(
-            "ViewModel","Live Data","Activity_Fragment","Navigation"
+            "ViewModel","Live Data","Activity_Fragment","Navigation",
+            "RecyclerView", "Coroutines"
         )
     }
 
@@ -47,6 +49,10 @@ class MainActivity : AppCompatActivity() {
             else if((provideContent()[position]).lowercase() == "navigation")
             {
                 intent = Intent(this, NavigationActivity::class.java)
+            }
+            else if((provideContent()[position]).lowercase() == "recyclerview")
+            {
+                intent = Intent(this, RV_RecyclerViewsActivity::class.java)
             }
             startActivity(intent)
         }
