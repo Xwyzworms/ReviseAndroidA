@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coroutine_navigation"
+    app:startDestination="@id/CT_CoroutinesFragmentMain"
+    >
+    <fragment
+        android:id="@+id/fragmentCoroutineFirst"
+        android:name="com.example.revisitingandroid.main.contents.coroutines.FragmentCoroutineFirst"
+        android:label="ct_fragment_coroutine_first"
+        tools:layout="@layout/ct_fragment_coroutine_first" >
+        <action
+            android:id="@+id/action_fragmentCoroutineFirst_to_fragmentCoroutineSecond"
+            app:destination="@id/fragmentCoroutineSecond" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentCoroutineSecond"
+        android:name="com.example.revisitingandroid.main.contents.coroutines.FragmentCoroutineSecond"
+        android:label="ct_fragment_coroutine_second"
+        tools:layout="@layout/ct_fragment_coroutine_second" />
+    <fragment
+        android:id="@+id/CT_CoroutinesFragmentMain"
+        android:name="com.example.revisitingandroid.main.contents.coroutines.CT_CoroutinesFragmentMain"
+        android:label="ct_fragment_coroutines_main"
+        tools:layout="@layout/ct_fragment_coroutines_main" >
+        <action
+            android:id="@+id/action_CT_CoroutinesFragmentMain_to_fragmentCoroutineFirst"
+            app:destination="@id/fragmentCoroutineFirst" />
+        <action
+            android:id="@+id/action_CT_CoroutinesFragmentMain_to_fragmentCoroutineSecond"
+            app:destination="@id/fragmentCoroutineSecond" />
+    </fragment>
+</navigation>

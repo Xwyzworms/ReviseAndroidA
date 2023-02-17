@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.revisitingandroid.databinding.ActivityMainBinding
 import com.example.revisitingandroid.main.MainGridAdapter
+import com.example.revisitingandroid.main.contents.coroutines.CT_CoroutinesActivityMain
 import com.example.revisitingandroid.main.contents.livedatas.LiveDataActivity
 import com.example.revisitingandroid.main.contents.navigations.NavigationActivity
 import com.example.revisitingandroid.main.contents.recyclerViews.RV_RecyclerViewsActivity
@@ -53,6 +54,10 @@ class MainActivity : AppCompatActivity() {
             else if((provideContent()[position]).lowercase() == "recyclerview")
             {
                 intent = Intent(this, RV_RecyclerViewsActivity::class.java)
+            }
+            else if((provideContent()[position]).lowercase() == "coroutines")
+            {
+                intent = Intent(this, CT_CoroutinesActivityMain::class.java)
             }
             startActivity(intent)
         }
