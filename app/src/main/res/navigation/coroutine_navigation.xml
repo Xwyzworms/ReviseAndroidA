@@ -7,7 +7,7 @@
     >
     <fragment
         android:id="@+id/fragmentCoroutineFirst"
-        android:name="com.example.revisitingandroid.main.contents.coroutines.FragmentCoroutineFirst"
+        android:name="com.example.revisitingandroid.main.contents.coroutines.v_1.FragmentCoroutineFirst"
         android:label="ct_fragment_coroutine_first"
         tools:layout="@layout/ct_fragment_coroutine_first" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentCoroutineSecond"
-        android:name="com.example.revisitingandroid.main.contents.coroutines.FragmentCoroutineSecond"
+        android:name="com.example.revisitingandroid.main.contents.coroutines.v_2.FragmentCoroutineSecond"
         android:label="ct_fragment_coroutine_second"
         tools:layout="@layout/ct_fragment_coroutine_second" />
     <fragment
