@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.example.revisitingandroid.databinding.ActivityMainBinding
 import com.example.revisitingandroid.main.MainGridAdapter
 import com.example.revisitingandroid.main.contents.coroutines.CT_CoroutinesActivityMain
+import com.example.revisitingandroid.main.contents.intents.IntentActivityMain
 import com.example.revisitingandroid.main.contents.livedatas.LiveDataActivity
 import com.example.revisitingandroid.main.contents.navigations.NavigationActivity
 import com.example.revisitingandroid.main.contents.recyclerViews.RV_RecyclerViewsActivity
@@ -28,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         return arrayListOf(
             "ViewModel","Live Data","Activity_Fragment","Navigation",
-            "RecyclerView", "Coroutines"
+            "RecyclerView", "Coroutines","Intent"
         )
     }
 
@@ -58,6 +59,10 @@ class MainActivity : AppCompatActivity() {
             else if((provideContent()[position]).lowercase() == "coroutines")
             {
                 intent = Intent(this, CT_CoroutinesActivityMain::class.java)
+            }
+            else if(provideContent()[position].lowercase() == "intent")
+            {
+                intent = Intent(this, IntentActivityMain::class.java)
             }
             startActivity(intent)
         }

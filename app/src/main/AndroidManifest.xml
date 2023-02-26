@@ -14,6 +14,18 @@
         android:theme="@style/Theme.RevisitingAndroid"
         tools:targetApi="31">
         <activity
+            android:name=".main.contents.intents.v_2.Intent_ActivityData"
+            android:exported="false" />
+        <activity
+            android:name=".main.contents.intents.v_3.Intent_ActivityParcelable"
+            android:exported="false" />
+        <activity
+            android:name=".main.contents.intents.v_1.IntentActivity_v1"
+            android:exported="false" />
+        <activity
+            android:name=".main.contents.intents.IntentActivityMain"
+            android:exported="false" />
+        <activity
             android:name=".main.contents.coroutines.CT_CoroutinesActivityMain"
             android:exported="false" />
         <activity
