@@ -1,6 +1,7 @@
 package com.example.revisitingandroid.main.contents.intents
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.result.ActivityResultLauncher
@@ -16,12 +17,15 @@ import com.example.revisitingandroid.main.contents.intents.v_2.Intent_ActivityDa
 import com.example.revisitingandroid.main.contents.intents.v_3.Intent_ActivityParcelable
 import com.example.revisitingandroid.main.contents.intents.v_3.Intent_ActivityParcelable.Companion.EXTRA_PARCELABLE
 import com.example.revisitingandroid.main.contents.intents.v_3.UserDummyData
+import com.example.revisitingandroid.main.contents.intents.v_4.MoveForResultActivity
 
 class IntentActivityMain : AppCompatActivity() {
 
     private lateinit var binding : ActivityIntentMainBinding
     private lateinit var launcherIntentGallery : ActivityResultLauncher<Intent>
     private lateinit var launcherIntentText : ActivityResultLauncher<Intent>
+    private lateinit var launcherIntentMoveActivity : ActivityResultLauncher<Intent>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityIntentMainBinding.inflate(layoutInflater)
@@ -31,6 +35,7 @@ class IntentActivityMain : AppCompatActivity() {
         // The implict intent should be prepared at onCreate
         // You create the contract from the begining
         prepareTheImplicitIntents()
+        prepareTheActivityLauncher()
 
     }
     private fun prepareTheImplicitIntents()
@@ -64,8 +69,23 @@ class IntentActivityMain : AppCompatActivity() {
             "Implicit Intent#2",
             "Explicit Intent-Data",
             "Explicit Intent-DataParcel",
-
+            "Implicit Intent-Dial",
+            "Get The Intent values"
         )
+    }
+
+    private fun prepareTheActivityLauncher()
+    {
+        launcherIntentMoveActivity = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { result->
+            // Do callback
+            if(result.resultCode == MoveForResultActivity.RESULT_CODE && result.data != null )
+            {
+                val selectedValue = result.data?.getIntExtra(MoveForResultActivity.EXTRA_SELECTED_VALUE, 0)
+                binding.intentTvMainText.text = selectedValue.toString()
+            }
+        }
     }
 
     private fun onClickListener(position : Int) :  Unit
@@ -95,7 +115,7 @@ class IntentActivityMain : AppCompatActivity() {
             }
             3 ->
             {
-                // Do some shit here
+
                 val intent = Intent(this, Intent_ActivityData::class.java)
 
                 val namae  : String = "PuRaMu Desu"
@@ -119,10 +139,20 @@ class IntentActivityMain : AppCompatActivity() {
                 val dummyUser : UserDummyData = UserDummyData(
                     namae,age,hobby
                 )
-
                 intent.putExtra(EXTRA_PARCELABLE, dummyUser)
 
                 startActivity(intent)
+            }
+            5->
+            {
+                val phoneNumber : String = "089912912212"
+                val dialPhoneIntent : Intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNumber"))
+                startActivity(dialPhoneIntent)
+            }
+            6->
+            {
+                val moveForResult = Intent(this, MoveForResultActivity::class.java)
+                launcherIntentMoveActivity.launch(moveForResult)
 
             }
             else ->

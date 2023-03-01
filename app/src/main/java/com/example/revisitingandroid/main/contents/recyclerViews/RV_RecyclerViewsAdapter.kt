@@ -29,7 +29,6 @@ class RV_RecyclerViewsAdapter(private val context : Context, private val listCon
                 clickListener(stringContent)
             }
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RVViewHolder {

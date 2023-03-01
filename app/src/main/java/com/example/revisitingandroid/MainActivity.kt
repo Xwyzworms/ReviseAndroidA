@@ -10,6 +10,7 @@ import com.example.revisitingandroid.main.contents.intents.IntentActivityMain
 import com.example.revisitingandroid.main.contents.livedatas.LiveDataActivity
 import com.example.revisitingandroid.main.contents.navigations.NavigationActivity
 import com.example.revisitingandroid.main.contents.recyclerViews.RV_RecyclerViewsActivity
+import com.example.revisitingandroid.main.contents.viewGroups.viewGroups_Activity_main
 import com.example.revisitingandroid.main.contents.viewModels.ViewModelsActivity
 
 class MainActivity : AppCompatActivity() {
@@ -29,7 +30,8 @@ class MainActivity : AppCompatActivity() {
 
         return arrayListOf(
             "ViewModel","Live Data","Activity_Fragment","Navigation",
-            "RecyclerView", "Coroutines","Intent"
+            "RecyclerView", "Coroutines","Intent","View_viewgroup"
+        
         )
     }
 
@@ -59,10 +61,15 @@ class MainActivity : AppCompatActivity() {
             else if((provideContent()[position]).lowercase() == "coroutines")
             {
                 intent = Intent(this, CT_CoroutinesActivityMain::class.java)
+
             }
             else if(provideContent()[position].lowercase() == "intent")
             {
                 intent = Intent(this, IntentActivityMain::class.java)
+            }
+            else if(provideContent()[position].lowercase() == "view_viewgroup")
+            {
+                intent = Intent(this, viewGroups_Activity_main::class.java)
             }
             startActivity(intent)
         }
