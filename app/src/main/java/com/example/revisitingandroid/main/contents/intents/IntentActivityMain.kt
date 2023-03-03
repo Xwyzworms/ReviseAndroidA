@@ -24,6 +24,7 @@ class IntentActivityMain : AppCompatActivity() {
     private lateinit var binding : ActivityIntentMainBinding
     private lateinit var launcherIntentGallery : ActivityResultLauncher<Intent>
     private lateinit var launcherIntentText : ActivityResultLauncher<Intent>
+
     private lateinit var launcherIntentMoveActivity : ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -115,9 +116,7 @@ class IntentActivityMain : AppCompatActivity() {
             }
             3 ->
             {
-
                 val intent = Intent(this, Intent_ActivityData::class.java)
-
                 val namae  : String = "PuRaMu Desu"
                 val age : Int = 20
                 val hobby : String= "Ngevvibu"
@@ -157,13 +156,14 @@ class IntentActivityMain : AppCompatActivity() {
             }
             else ->
             {
-                // Do shit
+
             }
         }
     }
     private fun setupView()
     {
         binding.intentRvMain.layoutManager = LinearLayoutManager(this)
-        binding.intentRvMain.adapter = IntentActivityMainAdapter(provideContents(), ::onClickListener)
+        binding.intentRvMain.adapter = IntentActivityMainAdapter(provideContents(),
+            ::onClickListener)
     }
 }

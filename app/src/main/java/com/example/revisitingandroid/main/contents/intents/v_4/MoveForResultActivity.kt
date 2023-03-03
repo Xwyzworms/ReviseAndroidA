@@ -45,9 +45,6 @@ class MoveForResultActivity : AppCompatActivity() {
                 finish()
             }
         }
-
-
-
     }
 
     companion object {

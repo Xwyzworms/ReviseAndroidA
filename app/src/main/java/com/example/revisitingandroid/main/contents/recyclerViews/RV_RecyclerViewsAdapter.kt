@@ -8,8 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.revisitingandroid.R
 
-class RV_RecyclerViewsAdapter(private val context : Context, private val listContents : ArrayList<String>,
-            private val clickListener : (String) -> Unit) : RecyclerView.Adapter<RV_RecyclerViewsAdapter.RVViewHolder>()
+class RV_RecyclerViewsAdapter(private val context : Context,
+                              private val listContents : ArrayList<String>,
+            private val clickListener : (String) -> Unit) :
+    RecyclerView.Adapter<RV_RecyclerViewsAdapter.RVViewHolder>()
 {
     inner class RVViewHolder(val view  : View) : RecyclerView.ViewHolder(view)
     {
@@ -17,7 +19,6 @@ class RV_RecyclerViewsAdapter(private val context : Context, private val listCon
         // ya basically yang bertanggung jawab untuk setiap item view yang ditampilkan dan juga interaksinya
         public fun bind(stringContent : String, position: Int)
         {
-
             val tv : TextView = itemView.findViewById(R.id.tv_rvMainContent)
             tv.text = stringContent
 

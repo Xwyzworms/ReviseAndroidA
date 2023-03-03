@@ -54,19 +54,14 @@ class FragmentCoroutineSecond : Fragment() {
         delay(8000)
         return 15000
     }
-
     private  fun withoutParallelDecomposition()
     {
-
         CoroutineScope(Dispatchers.Main).launch {
-
         val start : Long = System.currentTimeMillis()
 
         val stock_1 : Int = getTheStock1()
 
-
         val stock_2 : Int  = getTheStock2()
-
 
         binding.tvCtSecondStock1.text = stock_1.toString()
         binding.tvCtSecondStock2.text = stock_2.toString()
