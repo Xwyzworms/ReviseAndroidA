@@ -10,6 +10,7 @@ import com.example.revisitingandroid.main.contents.intents.IntentActivityMain
 import com.example.revisitingandroid.main.contents.livedatas.LiveDataActivity
 import com.example.revisitingandroid.main.contents.navigations.NavigationActivity
 import com.example.revisitingandroid.main.contents.recyclerViews.RV_RecyclerViewsActivity
+import com.example.revisitingandroid.main.contents.rooms.RoomActivityMain
 import com.example.revisitingandroid.main.contents.varargs.VariabelArguments
 import com.example.revisitingandroid.main.contents.viewGroups.viewGroups_Activity_main
 import com.example.revisitingandroid.main.contents.viewModels.ViewModelsActivity
@@ -75,6 +76,10 @@ class MainActivity : AppCompatActivity() {
             else if(provideContent()[position].lowercase() == "vararg")
             {
                 intent = Intent(this, VariabelArguments::class.java)
+            }
+            else if(provideContent()[position].lowercase() == "room")
+            {
+                intent = Intent(this,  RoomActivityMain::class.java)
             }
             startActivity(intent)
         }
