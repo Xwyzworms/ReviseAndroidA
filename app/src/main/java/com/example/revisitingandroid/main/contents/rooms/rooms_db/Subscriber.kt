@@ -4,16 +4,16 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName="subscriber")
+@Entity(tableName="subscriber_data_table")
 data class Subscriber
     (
     // Gave each entity a primarykey
     // Gave each table column a name by using column info
       @PrimaryKey(autoGenerate=true)
-      @ColumnInfo(name="subscriber_name")
+      @ColumnInfo(name="subscriber_id")
       val id : Int,
 
-      @ColumnInfo(name="subscriber_id")
+      @ColumnInfo(name="subscriber_name")
       val name : String,
 
       @ColumnInfo(name="subscriber_email")

@@ -12,11 +12,14 @@ interface SubscriberDAO
     @Insert
     suspend fun insertSubscriber(subscriber : Subscriber) : Long
 
-    @Update
-    suspend fun updateSubscriber(subscriber : Subscriber)
+    @Query("UPDATE subscriber_data_table SET subscriber_name=:subscriber WHERE subscriber_email=:email")
+    suspend fun updateSubscriber(subscriber : String, email : String)
 
     @Delete
     suspend fun deleteSubscriber(subscriber: Subscriber)
+
+    @Query("SELECT * FROM subscriber_data_table WHERE subscriber_email=:strEmail" )
+    suspend fun getUser(strEmail : String) : Subscriber?
 
     @Query("DELETE FROM subscriber_data_table")
     suspend fun deleteAll()

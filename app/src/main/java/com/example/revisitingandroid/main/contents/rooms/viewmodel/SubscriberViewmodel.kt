@@ -1,13 +1,13 @@
 package com.example.revisitingandroid.main.contents.rooms.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.revisitingandroid.main.contents.rooms.SubscriberRepository
 import com.example.revisitingandroid.main.contents.rooms.rooms_db.Subscriber
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class SubscriberViewmodel(private val repository: SubscriberRepository) : ViewModel()
 {
@@ -34,6 +34,22 @@ class SubscriberViewmodel(private val repository: SubscriberRepository) : ViewMo
 
     }
 
+    public fun getUser(userEmail : String)  : Boolean
+    {
+        var flag : Boolean = false;
+        runBlocking(Dispatchers.IO) {
+            if(repository.getUser(userEmail) != null)
+                {
+                    val defferedFlag = async {
+                        flag  = true
+                    };
+
+                    defferedFlag.await()
+                }
+        }
+    return flag
+    }
+
     public fun clearAllOrDelete()
     {
         if(saveOrUpdateButtonText.value == "Save")
@@ -50,11 +66,12 @@ class SubscriberViewmodel(private val repository: SubscriberRepository) : ViewMo
         }
     }
 
-    public fun update(subscriber: Subscriber)
+    public fun update(subscriber: String, email : String)
     {
         viewModelScope.launch(Dispatchers.IO)
         {
-            repository.update(subscriber)
+            Log.d("ASSERTSh", "DOUBLE")
+            repository.update(subscriber,email)
         }
     }
 
