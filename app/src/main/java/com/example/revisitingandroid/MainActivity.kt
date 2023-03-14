@@ -10,6 +10,7 @@ import com.example.revisitingandroid.main.contents.intents.IntentActivityMain
 import com.example.revisitingandroid.main.contents.livedatas.LiveDataActivity
 import com.example.revisitingandroid.main.contents.navigations.NavigationActivity
 import com.example.revisitingandroid.main.contents.recyclerViews.RV_RecyclerViewsActivity
+import com.example.revisitingandroid.main.contents.retrofits.RetrofitActivityMain
 import com.example.revisitingandroid.main.contents.rooms.RoomActivityMain
 import com.example.revisitingandroid.main.contents.varargs.VariabelArguments
 import com.example.revisitingandroid.main.contents.viewGroups.viewGroups_Activity_main
@@ -84,7 +85,7 @@ class MainActivity : AppCompatActivity() {
             }
             else if(provideContent()[position].lowercase() == "retrofit")
             {
-                //intent = Intent(this, RetrofitActivityMain::class.java)
+                intent = Intent(this, RetrofitActivityMain::class.java)
             }
             startActivity(intent)
         }
