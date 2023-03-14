@@ -32,7 +32,8 @@ class MainActivity : AppCompatActivity() {
 
         return arrayListOf(
             "ViewModel","Live Data","Activity_Fragment","Navigation",
-            "RecyclerView", "Coroutines","Intent","View_viewgroup","vararg","room"
+            "RecyclerView", "Coroutines","Intent","View_viewgroup","vararg","room",
+            "retrofit",
         
         )
     }
@@ -80,6 +81,10 @@ class MainActivity : AppCompatActivity() {
             else if(provideContent()[position].lowercase() == "room")
             {
                 intent = Intent(this,  RoomActivityMain::class.java)
+            }
+            else if(provideContent()[position].lowercase() == "retrofit")
+            {
+                //intent = Intent(this, RetrofitActivityMain::class.java)
             }
             startActivity(intent)
         }

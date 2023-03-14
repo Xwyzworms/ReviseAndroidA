@@ -70,7 +70,6 @@ class SubscriberViewmodel(private val repository: SubscriberRepository) : ViewMo
     {
         viewModelScope.launch(Dispatchers.IO)
         {
-            Log.d("ASSERTSh", "DOUBLE")
             repository.update(subscriber,email)
         }
     }
