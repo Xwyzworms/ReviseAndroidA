@@ -13,7 +13,6 @@ abstract class SubscriberDatabase : RoomDatabase() {
     companion object {
         @Volatile
         private var INSTANCE : SubscriberDatabase? = null
-
         fun getInstance(context : Context) : SubscriberDatabase
         {
             // Synchronized itu basically dia memastikan hanya ada satu THREAD aja yang bekerja untuk kelas ini !

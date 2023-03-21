@@ -32,7 +32,6 @@ class RetrofitInstance private constructor() {
             val interceptor : HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
                 this.level = HttpLoggingInterceptor.Level.BODY
             }
-
             @JvmStatic // Using Builder Design pattern , basically client ini buat extend fungsionalitas retrofit
             val client = OkHttpClient.Builder().apply {
                 this.addInterceptor(interceptor)
@@ -51,10 +50,10 @@ class RetrofitInstance private constructor() {
             public val retrofitInstance : Retrofit =
                     Retrofit.Builder()
                     .baseUrl(BASE_URL)
-                    .client(client)
                     .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
                     .build()
         }
+
     }
 
     companion object {

@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.example.revisitingandroid.databinding.ActivityMainBinding
 import com.example.revisitingandroid.main.MainGridAdapter
 import com.example.revisitingandroid.main.contents.coroutines.CT_CoroutinesActivityMain
+import com.example.revisitingandroid.main.contents.generic.GenericMainActivity
 import com.example.revisitingandroid.main.contents.intents.IntentActivityMain
 import com.example.revisitingandroid.main.contents.livedatas.LiveDataActivity
 import com.example.revisitingandroid.main.contents.navigations.NavigationActivity
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         return arrayListOf(
             "ViewModel","Live Data","Activity_Fragment","Navigation",
             "RecyclerView", "Coroutines","Intent","View_viewgroup","vararg","room",
-            "retrofit",
+            "retrofit","generic"
         
         )
     }
@@ -86,6 +87,10 @@ class MainActivity : AppCompatActivity() {
             else if(provideContent()[position].lowercase() == "retrofit")
             {
                 intent = Intent(this, RetrofitActivityMain::class.java)
+            }
+            else if(provideContent()[position].lowercase() == "generic")
+            {
+                intent = Intent(this, GenericMainActivity::class.java)
             }
             startActivity(intent)
         }

@@ -77,6 +77,7 @@ class RetrofitActivityMain : AppCompatActivity() {
                 block = {
                     val response: Response<Albums> = retrofitService.getAlbums()
                     emit(response)
+
                 }
             )
 
@@ -93,22 +94,33 @@ class RetrofitActivityMain : AppCompatActivity() {
 
             }
             responseLiveData.observe(this, observer)
-
         }
 
-        suspend fun getRequestWithPathParams() {
-
-
+        fun getRequestWithPathParams() {
             val pathResponse: LiveData<Response<Album>> = liveData(
                 context = Dispatchers.IO,
                 block = {
-6
+                    val response : Response<Album> = retrofitService.getAlbum(2)
+                    emit(response)
                 }
             )
+
+            val observer : Observer<Response<Album>> = object : Observer<Response<Album>>
+            {
+                override fun onChanged(t: Response<Album>?) {
+                    val responseContent = t?.body()
+                    if(responseContent != null)
+                    {
+                        binding.rvRetrofitMain.adapter = RetrofitMainAdapter(arrayListOf(responseContent))
+                    }
+                }
+            }
+            pathResponse.observe(this, observer)
+
         }
 
         binding.btnRetrofitPath.setOnClickListener {
-            getRequestAlbums()
+            getRequestWithPathParams()
         }
 
         binding.btnRetrofitQuery1.setOnClickListener( object : View.OnClickListener {

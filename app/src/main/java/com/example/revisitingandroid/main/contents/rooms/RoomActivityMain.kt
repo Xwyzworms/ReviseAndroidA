@@ -42,7 +42,6 @@ private lateinit var viewModel : SubscriberViewmodel
     }
     private fun setupViews()
     {
-
         fun setupButtons()
         {
                 binding.saveOrUpdateButton.setOnClickListener {
