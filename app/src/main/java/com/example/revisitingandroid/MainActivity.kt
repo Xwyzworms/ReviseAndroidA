@@ -10,6 +10,7 @@ import com.example.revisitingandroid.main.contents.generic.GenericMainActivity
 import com.example.revisitingandroid.main.contents.intents.IntentActivityMain
 import com.example.revisitingandroid.main.contents.livedatas.LiveDataActivity
 import com.example.revisitingandroid.main.contents.navigations.NavigationActivity
+import com.example.revisitingandroid.main.contents.notifications.NotificationActivity
 import com.example.revisitingandroid.main.contents.recyclerViews.RV_RecyclerViewsActivity
 import com.example.revisitingandroid.main.contents.retrofits.RetrofitActivityMain
 import com.example.revisitingandroid.main.contents.rooms.RoomActivityMain
@@ -35,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         return arrayListOf(
             "ViewModel","Live Data","Activity_Fragment","Navigation",
             "RecyclerView", "Coroutines","Intent","View_viewgroup","vararg","room",
-            "retrofit","generic"
+            "retrofit","generic","notification"
         
         )
     }
@@ -91,6 +92,10 @@ class MainActivity : AppCompatActivity() {
             else if(provideContent()[position].lowercase() == "generic")
             {
                 intent = Intent(this, GenericMainActivity::class.java)
+            }
+            else if(provideContent()[position].lowercase() == "notification")
+            {
+                intent = Intent(this, NotificationActivity::class.java)
             }
             startActivity(intent)
         }

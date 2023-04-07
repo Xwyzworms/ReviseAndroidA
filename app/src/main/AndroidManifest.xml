@@ -4,6 +4,7 @@
     package="com.example.revisitingandroid">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -15,9 +16,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RevisitingAndroid"
         tools:targetApi="31">
-        <activity
-            android:name=".GenericMainActivity"
-            android:exported="false" />
+        <activity android:name=".main.contents.notifications.NotificationActivity"
+            android:exported="false"
+            />
+        <activity android:name=".main.contents.notifications.RoseNotificationActivity"
+            android:exported="false"
+            />
+        <activity android:name=".main.contents.notifications.StrangerNotificationActivity"
+            android:exported="false"/>
         <activity
             android:name=".main.contents.retrofits.RetrofitActivityMain"
             android:exported="false" />
