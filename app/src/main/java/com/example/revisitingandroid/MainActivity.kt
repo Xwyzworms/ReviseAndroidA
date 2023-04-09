@@ -17,6 +17,7 @@ import com.example.revisitingandroid.main.contents.rooms.RoomActivityMain
 import com.example.revisitingandroid.main.contents.varargs.VariabelArguments
 import com.example.revisitingandroid.main.contents.viewGroups.viewGroups_Activity_main
 import com.example.revisitingandroid.main.contents.viewModels.ViewModelsActivity
+import com.example.revisitingandroid.main.contents.workmanagers.WorkmanagerActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,8 +37,7 @@ class MainActivity : AppCompatActivity() {
         return arrayListOf(
             "ViewModel","Live Data","Activity_Fragment","Navigation",
             "RecyclerView", "Coroutines","Intent","View_viewgroup","vararg","room",
-            "retrofit","generic","notification"
-        
+            "retrofit","generic","notification","workmanager"
         )
     }
 
@@ -96,6 +96,10 @@ class MainActivity : AppCompatActivity() {
             else if(provideContent()[position].lowercase() == "notification")
             {
                 intent = Intent(this, NotificationActivity::class.java)
+            }
+            else if(provideContent()[position].lowercase() == "workmanager")
+            {
+                intent = Intent(this, WorkmanagerActivity::class.java)
             }
             startActivity(intent)
         }

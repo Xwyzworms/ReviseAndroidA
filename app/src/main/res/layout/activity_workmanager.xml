@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".main.contents.workmanagers.WorkmanagerActivity">
+
+    <TextView
+        android:id="@+id/tv_immediate_onetime"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="Immediate"
+        android:textSize="25sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <Button
+        android:id="@+id/btn_oneTime_immediate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Immediate"
+        app:layout_constraintTop_toBottomOf="@id/tv_immediate_onetime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tv_lr_onetime"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="Long Running"
+        android:textSize="25sp"
+        app:layout_constraintTop_toBottomOf="@id/btn_oneTime_immediate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+
+    <Button
+        android:id="@+id/btn_oneTime_longRunning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OneTime"
+        app:layout_constraintTop_toBottomOf="@id/tv_lr_onetime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_periodic_longRunning"
+        />
+
+    <Button
+        android:id="@+id/btn_periodic_longRunning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Periodic"
+        app:layout_constraintTop_toBottomOf="@id/tv_lr_onetime"
+        app:layout_constraintStart_toEndOf="@id/btn_oneTime_longRunning"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+
+
+    <TextView
+        android:id="@+id/tv_defereable_onetime"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="Deferreable"
+        android:textSize="25sp"
+        app:layout_constraintTop_toBottomOf="@id/btn_oneTime_longRunning"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+
+    <Button
+        android:id="@+id/btn_oneTime_deferrable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OneTime"
+        app:layout_constraintTop_toBottomOf="@id/tv_defereable_onetime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_periodic_deferrable"
+        />
+
+    <Button
+        android:id="@+id/btn_periodic_deferrable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Periodic"
+        app:layout_constraintTop_toBottomOf="@id/tv_defereable_onetime"
+        app:layout_constraintStart_toEndOf="@id/btn_oneTime_deferrable"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
