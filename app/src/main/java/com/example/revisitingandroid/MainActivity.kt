@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.revisitingandroid.databinding.ActivityMainBinding
 import com.example.revisitingandroid.main.MainGridAdapter
+import com.example.revisitingandroid.main.contents.cameraX.CameraxActivity
 import com.example.revisitingandroid.main.contents.coroutines.CT_CoroutinesActivityMain
 import com.example.revisitingandroid.main.contents.generic.GenericMainActivity
 import com.example.revisitingandroid.main.contents.intents.IntentActivityMain
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         return arrayListOf(
             "ViewModel","Live Data","Activity_Fragment","Navigation",
             "RecyclerView", "Coroutines","Intent","View_viewgroup","vararg","room",
-            "retrofit","generic","notification","workmanager"
+            "retrofit","generic","notification","workmanager","camerax"
         )
     }
 
@@ -100,6 +101,10 @@ class MainActivity : AppCompatActivity() {
             else if(provideContent()[position].lowercase() == "workmanager")
             {
                 intent = Intent(this, WorkmanagerActivity::class.java)
+            }
+            else if(provideContent()[position].lowercase() == "camerax")
+            {
+                intent = Intent(this, CameraxActivity::class.java)
             }
             startActivity(intent)
         }
