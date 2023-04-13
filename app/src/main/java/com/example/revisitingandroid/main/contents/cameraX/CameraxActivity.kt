@@ -7,30 +7,29 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.provider.MediaStore.Audio.Media
 import android.util.Log
 import android.widget.Toast
 import androidx.camera.core.*
 import androidx.camera.core.ImageCapture.OnImageSavedCallback
 import androidx.camera.lifecycle.ProcessCameraProvider
-import androidx.camera.video.Recorder
+import androidx.camera.video.*
 import androidx.camera.video.VideoCapture
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.PermissionChecker
 import com.example.revisitingandroid.databinding.ActivityCameraxBinding
+import java.nio.ByteBuffer
 import java.text.SimpleDateFormat
 import java.util.Locale
-import java.util.concurrent.ExecutorService
 
 typealias LumaListener = (luma : Double) -> Unit
 
 class CameraxActivity : AppCompatActivity() {
     private lateinit var binding : ActivityCameraxBinding
-
-
     private var imageCapture : ImageCapture? = null
     private var videoCapture : VideoCapture<Recorder>? = null // Recorder itu implement video output, so ya karena dia turunan video output , maka aman aman aja
 
+    private var recording : Recording? = null
     //private lateinit var cameraExecutor : ExecutorService
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,8 +69,6 @@ class CameraxActivity : AppCompatActivity() {
         // TODO
         // CameraX Important shit
 
-
-
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this) // Create or get CameraX Instance
         cameraProviderFuture.addListener({
             val cameraProvider = cameraProviderFuture.get()
@@ -86,14 +83,25 @@ class CameraxActivity : AppCompatActivity() {
                 }
 
             imageCapture = ImageCapture.Builder().build()
+            val recorder = Recorder.Builder()
+                .setQualitySelector(QualitySelector.from(Quality.HIGHEST))
+                .build()
+            videoCapture = VideoCapture.withOutput(recorder)
+
+            val imageAnalyzer : ImageAnalysis =  ImageAnalysis.Builder().build().also {
+                it.setAnalyzer(ContextCompat.getMainExecutor(this), LuminosityAnalyzer( listener = { luma ->
+                    Log.d(TAG, "AverageLuminosity ${luma}")
+                }))
+            }
             val cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+
 
             // Bind usecases to camera
             try {
                 // Unbind use cases before rebinding
                 cameraProvider.unbindAll()
 
-                cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture)
+                cameraProvider.bindToLifecycle(this, cameraSelector, preview, videoCapture)
             } catch (e : Exception) {
                 Log.e(TAG, "Use case binding failed",e)
             }
@@ -108,7 +116,6 @@ class CameraxActivity : AppCompatActivity() {
         val imageCapture = imageCapture ?: return // just Check whether the imageCapture val is Null or not
 
         // Create time stamped name and mediaStore Entry
-        // bangke belum terlalu paham kalau ini
         val name = SimpleDateFormat(FILENAME_FORMAT, Locale.US)
             .format(System.currentTimeMillis())
 
@@ -149,13 +156,99 @@ class CameraxActivity : AppCompatActivity() {
 
     private fun captureVideo()
     {
+        val videoCapture = this.videoCapture ?: return
 
+        binding.videoCaptureButton.isEnabled = false
+
+        val curRecording = recording
+        if(curRecording != null)
+        {
+            curRecording.stop()
+            recording = null
+            return
+        }
+
+        // Create a new session, define the metadata
+        val name = SimpleDateFormat(FILENAME_FORMAT, Locale.US)
+            .format(System.currentTimeMillis())
+        val contentValues : ContentValues = ContentValues().apply {
+            put(MediaStore.MediaColumns.DISPLAY_NAME, name)
+            put(MediaStore.MediaColumns.MIME_TYPE, "video/mp4")
+            if(Build.VERSION.SDK_INT > Build.VERSION_CODES.P)
+            {
+                put(MediaStore.Video.Media.RELATIVE_PATH, "Movies/CameraPrim")
+            }
+        }
+
+        val mediaStoreOutputOptions = MediaStoreOutputOptions.Builder(contentResolver,
+            MediaStore.Video.Media.EXTERNAL_CONTENT_URI )
+            .setContentValues(contentValues)
+            .build()
+
+        recording = videoCapture.output.prepareRecording(this, mediaStoreOutputOptions)
+            .apply {
+                if(PermissionChecker.checkSelfPermission(this@CameraxActivity, Manifest.permission.RECORD_AUDIO) == PermissionChecker.PERMISSION_GRANTED)
+                {
+                    withAudioEnabled()
+                }
+            }
+            .start(ContextCompat.getMainExecutor(this)) { recordEvent ->
+                when (recordEvent) {
+                    is VideoRecordEvent.Start ->
+                    {
+                        binding.videoCaptureButton.apply {
+
+                            text = "Stop Capturing"
+                            isEnabled =true
+                        }
+
+                    }
+                    is VideoRecordEvent.Finalize ->
+                    {
+                        if(!recordEvent.hasError())
+                        {
+                            val message : String ="Video Captured Successfully ${recordEvent.outputResults.outputUri}"
+                            Toast.makeText(baseContext, message, Toast.LENGTH_SHORT).show()
+                        }
+                        else
+                        {
+                            recording?.close()
+                            recording = null
+                        }
+
+                        binding.videoCaptureButton.apply {
+                            text = "Start Capturing"
+                            isEnabled = true
+                        }
+                    }
+                }
+            }
     }
 
-    private class LuminosityAnalyzer(private val listener : LumaListener) : ImageAnalysis.Analyzer
+    private class LuminosityAnalyzer(private val listener : (luma : Double) -> Unit) : ImageAnalysis.Analyzer
     {
-        override fun analyze(image: ImageProxy) {
 
+        private fun ByteBuffer.toByteArray() : ByteArray
+        {
+            Log.d(TAG, "Before ${remaining()}")
+            rewind() // A temporary buffer to get small amount of previously recorded data
+            val data = ByteArray(remaining()) // ByteArray to create , Remaining --> get the number of elements remaining pada buffer ini
+            Log.d(TAG, "After ${remaining()}")
+            get(data) // Get the buffer bytes into given destination ( data )
+            return  data
+        }
+
+        override fun analyze(image: ImageProxy)
+        {
+            val buffer : ByteBuffer = image.planes[0].buffer // Get the R components
+            val data : ByteArray = buffer.toByteArray()
+            val convertedPixels :List<Int> = data.map{ it.toInt() and 0xFF }// Get the R pixel components
+            Log.d(TAG, "ConvertedPixels ${convertedPixels.toString()}")
+            val luma = convertedPixels.average()
+
+            listener(luma)
+
+            image.close()
         }
 
     }
