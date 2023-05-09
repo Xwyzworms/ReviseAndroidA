@@ -101,7 +101,7 @@ class CameraxActivity : AppCompatActivity() {
                 // Unbind use cases before rebinding
                 cameraProvider.unbindAll()
 
-                cameraProvider.bindToLifecycle(this, cameraSelector, preview, videoCapture)
+                cameraProvider.bindToLifecycle(this, cameraSelector, preview)
             } catch (e : Exception) {
                 Log.e(TAG, "Use case binding failed",e)
             }
