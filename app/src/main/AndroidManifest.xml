@@ -24,6 +24,11 @@
         android:theme="@style/Theme.RevisitingAndroid"
         tools:targetApi="31">
         <activity
+            android:name=".main.contents.compose.MainComposeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_main_compose"
+            android:theme="@style/Theme.RevisitingAndroid" />
+        <activity
             android:name=".main.contents.tdd.DoTDDShitBroo"
             android:exported="false" />
         <activity

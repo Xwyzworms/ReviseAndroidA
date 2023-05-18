@@ -106,6 +106,7 @@ class MainActivity : AppCompatActivity() {
             {
                 intent = Intent(this, CameraxActivity::class.java)
             }
+            else if(provideContent()[position].lowercase() == "compose") {}
             startActivity(intent)
         }
     }

@@ -31,5 +31,23 @@
     <string name="dummy_photos">6 photos</string>
     <string name="channel_name_basic">basic_channel</string>
     <string name="channel_name_basic_description">some channel description basic</string>
+    <string name="title_activity_main_compose">MainComposeActivity</string>
+
+
+    <string name="placeholder_search">Cari kopi pilihanmu!</string>
+    <string name="category_all">All</string>
+    <string name="category_americano">Americano</string>
+    <string name="category_cappuccino">Cappuccino</string>
+    <string name="category_espresso">Espresso</string>
+    <string name="category_frappe">Frappe</string>
+    <string name="category_latte">Latte</string>
+    <string name="category_macchiato">Macchiato</string>
+    <string name="category_mocha">Mocha</string>
+    <string name="section_category">Mau ngopi apa hari ini?</string>
+    <string name="section_favorite_menu">Menu Favorit</string>
+    <string name="section_best_seller_menu">Menu Terlaris</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_favorite">Favorite</string>
+    <string name="menu_profile">Profile</string>
     <!-- VIEW GROUP SECTION end -->
 </resources>
