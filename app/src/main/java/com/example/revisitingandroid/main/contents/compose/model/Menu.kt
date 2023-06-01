@@ -17,5 +17,6 @@ val dummyMenu : List<Menu> = listOf(
     Menu(R.drawable.menu2, "Pumpkin Spice Latter", "Rp 18.000"),
     Menu(R.drawable.menu3, "Light Cappuccino", "Rp 20.000"),
     Menu(R.drawable.menu4, "Choco Creamy Latte", "Rp 16.000" )
-
 ).shuffled()
+
+val dummyBestSellerMenu = dummyMenu.shuffled()

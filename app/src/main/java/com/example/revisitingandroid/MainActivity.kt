@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.example.revisitingandroid.databinding.ActivityMainBinding
 import com.example.revisitingandroid.main.MainGridAdapter
 import com.example.revisitingandroid.main.contents.cameraX.CameraxActivity
+import com.example.revisitingandroid.main.contents.compose.MainComposeActivity
 import com.example.revisitingandroid.main.contents.coroutines.CT_CoroutinesActivityMain
 import com.example.revisitingandroid.main.contents.generic.GenericMainActivity
 import com.example.revisitingandroid.main.contents.intents.IntentActivityMain
@@ -38,8 +39,9 @@ class MainActivity : AppCompatActivity() {
         return arrayListOf(
             "ViewModel","Live Data","Activity_Fragment","Navigation",
             "RecyclerView", "Coroutines","Intent","View_viewgroup","vararg","room",
-            "retrofit","generic","notification","workmanager","camerax"
+            "retrofit","generic","notification","workmanager","camerax","compose"
         )
+
     }
 
     private fun prepareGridView()
@@ -106,7 +108,10 @@ class MainActivity : AppCompatActivity() {
             {
                 intent = Intent(this, CameraxActivity::class.java)
             }
-            else if(provideContent()[position].lowercase() == "compose") {}
+            else if(provideContent()[position].lowercase() == "compose")
+            {
+                intent = Intent(this, MainComposeActivity::class.java)
+            }
             startActivity(intent)
         }
     }
